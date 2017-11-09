@@ -51,7 +51,7 @@ describe BitmapEditor do
 
 	describe "#colour_vertical_px" do
 		context "given the input 2, 3, 6, 'W'" do
-			it "changes the elements in column 2 in rows 3 to 6 inclusively to 'W" do
+			it "changes the elements in column 2 in rows 3 to 6 to 'W inclusively" do
 				@editor.colour_vertical_px(2, 3, 6, 'W')
 				expect(@editor.bitmap).to eql([['O','O','O','O','O'],
 																		['O','O','O','O','O'],
@@ -59,6 +59,20 @@ describe BitmapEditor do
 																		['O','W','O','O','O'],
 																		['O','W','O','O','O'],
 																		['O','W','O','O','O']])
+			end
+		end
+	end
+
+	describe "#colour_horizontal_px" do
+		context "given the input 3, 5, 2, 'Z'" do
+			it "changes the elements in columns 3 to 5 in row 2 to 'Z' inclusively" do
+				@editor.colour_horizontal_px(3, 5, 2, 'Z')
+				expect(@editor.bitmap).to eql([['O','O','O','O','O'],
+																		['O','O','Z','Z','Z'],
+																		['O','O','O','O','O'],
+																		['O','O','O','O','O'],
+																		['O','O','O','O','O'],
+																		['O','O','O','O','O']])
 			end
 		end
 	end
