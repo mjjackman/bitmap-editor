@@ -84,7 +84,7 @@ describe BitmapEditor do
 	describe "#clear" do
 		it "sets each element in bitmap to 'O'" do
 			@editor.bitmap = Array.new(2) { Array.new(3, 'Z')}
-			@editor.bitmap.clear
+			@editor.clear
 			expect(@editor.bitmap).to eql([['O','O','O'],
 																		['O','O','O']])
 		end
