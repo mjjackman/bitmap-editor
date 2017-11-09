@@ -15,6 +15,8 @@ class BitmapEditor
         colour_px(line[1].to_i, line[2].to_i, line[3])
       when 'V'
         colour_vertical_px(line[1].to_i, line[2].to_i, line[3].to_i, line[4])
+      when 'H'
+        colour_horizontal_px(line[1].to_i, line[2].to_i, line[3].to_i, line[4])
       when 'S'
           puts "There is no image"
       else
@@ -33,5 +35,9 @@ class BitmapEditor
 
   def colour_vertical_px(x, y1, y2, colour)
     @bitmap[(y1-1)..(y2-1)].each {|i| i[x-1] = colour }
+  end
+
+  def colour_horizontal_px(x1, x2, y, colour)
+    @bitmap[y-1][(x1-1)..(x2-1)] = @bitmap[y-1][(x1-1)..(x2-1)].fill(colour)
   end
 end

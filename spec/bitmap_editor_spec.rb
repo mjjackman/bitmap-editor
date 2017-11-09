@@ -10,8 +10,8 @@ describe BitmapEditor do
 		context "given the numbers 5, 6" do
 			it "returns a 2D array with 5 columns and 6 rows" do
 
-				@test_bitmap = @editor.new_image(5, 6)
-				expect(@test_bitmap).to eql([['O','O','O','O','O'],
+				@editor.new_image(5, 6)
+				expect(@editor.bitmap).to eql([['O','O','O','O','O'],
 																		['O','O','O','O','O'],
 																		['O','O','O','O','O'],
 																		['O','O','O','O','O'],
