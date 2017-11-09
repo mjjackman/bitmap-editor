@@ -10,7 +10,9 @@ class BitmapEditor
       command = line[0]
       case command
       when 'I'
-        print @bitmap = new_image(line[1].to_i, line[2].to_i)
+        @bitmap = new_image(line[1].to_i, line[2].to_i)
+      when 'L'
+        colour_px(line[1].to_i, line[2].to_i, line[3])
       when 'S'
           puts "There is no image"
       else
@@ -21,5 +23,9 @@ class BitmapEditor
 
   def new_image(m, n)
     matrix = Array.new(n) { Array.new(m, 'O') }
+  end
+
+  def colour_px(x, y, colour)
+    @bitmap[y-1][x-1] = colour
   end
 end
