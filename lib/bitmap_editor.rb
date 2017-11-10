@@ -15,7 +15,11 @@ class BitmapEditor
       command = line[0]
       case command
       when 'I'
-        @bitmap = new_image(line[1].to_i, line[2].to_i)
+        if line.length == 3
+          @bitmap = new_image(line[1].to_i, line[2].to_i)
+        else
+          return "#{ line } is an invalid command"
+        end
       when 'L'
         colour_px(line[1].to_i, line[2].to_i, line[3])
       when 'V'

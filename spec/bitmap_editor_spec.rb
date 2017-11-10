@@ -109,8 +109,7 @@ describe BitmapEditor do
 				test_file = open("examples/test.txt", "w")
 				test_file.puts "I 3 4 5"
 				test_file.close
-				# binding.pry
-				expect(@editor.run(test_file)).to eql("I 3 4 5 is invalid command")
+				expect(@editor.run(test_file)).to eql("I345 is an invalid command")
 			end
 		end
 	end
