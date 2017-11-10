@@ -89,4 +89,13 @@ describe BitmapEditor do
 																		['O','O','O']])
 		end
 	end
+
+	describe "#run" do
+		context "if an none existing file is used" do
+			it "should throw an exception" do
+				expect { @editor.run('unexistant_file') }.to raise_error { |error|
+      expect(error).to be_a(StandardError) }
+			end
+		end
+	end
 end

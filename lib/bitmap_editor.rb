@@ -1,9 +1,14 @@
 class BitmapEditor
   attr_accessor :bitmap
 
-  def run(file)
-    return puts "please provide correct file" if file.nil? || !File.exists?(file)
-
+  def run(file_name)
+    begin
+      file = open(file_name)
+    rescue StandardError=>e
+      raise StandardError
+      puts "Error: #{e}"
+      return 
+    end
     File.open(file).each do |line|
       line = line.chomp
       line.delete! ' '
