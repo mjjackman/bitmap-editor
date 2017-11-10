@@ -20,7 +20,7 @@ class BitmapEditor
       when 'C'
         clear
       when 'S'
-          puts "There is no image"
+          puts @bitmap.map { |i| i.join(' ') }
       else
           puts 'unrecognised command :('
       end
