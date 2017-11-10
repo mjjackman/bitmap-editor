@@ -9,7 +9,7 @@ class BitmapEditor
       puts "Error: #{e}"
       return 
     end
-    File.open(file).each do |line|
+    file.each do |line|
       line = line.chomp
       line.delete! ' '
       command = line[0]

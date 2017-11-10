@@ -98,4 +98,21 @@ describe BitmapEditor do
 			end
 		end
 	end
+
+	before do
+		test_file = open("examples/test.txt", "w")
+	end
+
+	describe "new M x N image command" do
+		context "if the command is larger than 3" do
+			it "returns an error message" do
+				test_file = open("examples/test.txt", "w")
+				test_file.puts "I 3 4 5"
+				test_file.close
+				# binding.pry
+				expect(@editor.run(test_file)).to eql("I 3 4 5 is invalid command")
+			end
+		end
+	end
+
 end
