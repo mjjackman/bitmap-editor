@@ -114,4 +114,15 @@ describe BitmapEditor do
 		end
 	end
 
+	describe "command for changing the colour a given pixel" do
+		context "if the command is larger than 4" do
+			it "returns an error message" do
+				test_file = open("examples/test.txt", "w")
+				test_file.puts "L 3 5"
+				test_file.close
+				expect(@editor.run(test_file)).to eql("L35 is an invalid command")
+			end
+		end
+	end
+
 end
