@@ -27,7 +27,11 @@ class BitmapEditor
           return invalid_msg(line)
         end
       when 'V'
-        colour_vertical_px(line[1].to_i, line[2].to_i, line[3].to_i, line[4])
+        if line.length == 5
+          colour_vertical_px(line[1].to_i, line[2].to_i, line[3].to_i, line[4])
+        else
+          return invalid_msg(line)
+        end
       when 'H'
         colour_horizontal_px(line[1].to_i, line[2].to_i, line[3].to_i, line[4])
       when 'C'
