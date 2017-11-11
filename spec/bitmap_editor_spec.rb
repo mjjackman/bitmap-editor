@@ -125,4 +125,15 @@ describe BitmapEditor do
 		end
 	end
 
+	describe "command for vertical colour changing" do
+		context "if the command is larger than 5" do
+			it "returns an error message" do
+				test_file = open("examples/test.txt", "w")
+				test_file.puts "V 4 5 6 7 8 9"
+				test_file.close
+				expect(@editor.run(test_file)).to eql("V456789 is an invalid command")
+			end
+		end
+	end
+
 end
