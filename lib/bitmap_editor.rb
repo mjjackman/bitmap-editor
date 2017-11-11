@@ -18,7 +18,7 @@ class BitmapEditor
         if line.length == 3
           @bitmap = new_image(line[1].to_i, line[2].to_i)
         else
-          return "#{ line } is an invalid command"
+          return invalid_msg(line)
         end
       when 'L'
         colour_px(line[1].to_i, line[2].to_i, line[3])
@@ -34,6 +34,10 @@ class BitmapEditor
           puts 'unrecognised command :('
       end
     end
+  end
+
+  def invalid_msg(line)
+    "#{ line } is an invalid command"
   end
 
   def new_image(m, n)
