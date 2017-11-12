@@ -1,3 +1,5 @@
+require 'pry'
+
 class BitmapEditor
   attr_accessor :bitmap
 
@@ -15,25 +17,29 @@ class BitmapEditor
       command = line[0]
       case command
       when 'I'
-        if line.length == 3
+        if line.length == 3 && check_params(line, 3)
           @bitmap = new_image(line[1].to_i, line[2].to_i)
         else
           return invalid_msg(line)
         end
       when 'L'
-        if line.length == 4
+        if line.length == 4 && check_params(line, 4)
           colour_px(line[1].to_i, line[2].to_i, line[3])
         else
           return invalid_msg(line)
         end
       when 'V'
-        if line.length == 5
+        if line.length == 5 && check_params(line, 5)
           colour_vertical_px(line[1].to_i, line[2].to_i, line[3].to_i, line[4])
         else
           return invalid_msg(line)
         end
       when 'H'
-        colour_horizontal_px(line[1].to_i, line[2].to_i, line[3].to_i, line[4])
+        if line.length == 5 && check_params(line, 5)
+          colour_horizontal_px(line[1].to_i, line[2].to_i, line[3].to_i, line[4])
+        else
+          return invalid_msg(line)
+        end
       when 'C'
         clear
       when 'S'
@@ -44,8 +50,20 @@ class BitmapEditor
     end
   end
 
+  def check_params(line, num)
+    if num == 3
+      line =~ /[A-Z][0-9]{2}/
+    elsif num == 4
+      line =~ /[A-Z][0-9]{2}[A-Z]/
+    elsif num == 5
+      line =~ /[A-Z][0-9]{3}[A-Z]/
+    else 
+      false
+    end
+  end
+
   def invalid_msg(line)
-    "#{ line } is an invalid command"
+    print "#{ line } is an invalid command"
   end
 
   def new_image(m, n)
