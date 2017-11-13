@@ -71,4 +71,12 @@ describe BitmapEditor do
 		end
 	end
 
+	describe '#check_params' do
+		context "validates the command params" do
+			it "return true if params are correct" do
+				command = "H 3 5 2 Z"
+				expect(@editor.check_params(command, 5)).to be true
+			end
+		end
+	end
 end
