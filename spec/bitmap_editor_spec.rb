@@ -27,7 +27,7 @@ describe BitmapEditor do
 				test_file.close
 				expect do
 					@editor.run(test_file)
-				end.to output("I345 is an invalid command").to_stdout
+				end.to output("I 3 4 5 is an invalid command").to_stdout
 			end
 		end
 	end
@@ -40,7 +40,7 @@ describe BitmapEditor do
 				test_file.close
 				expect do
 					@editor.run(test_file)
-				end.to output("L35 is an invalid command").to_stdout			
+				end.to output("L 3 5 is an invalid command").to_stdout			
 			end
 		end
 	end
@@ -53,7 +53,7 @@ describe BitmapEditor do
 				test_file.close
 				expect do
 					@editor.run(test_file)
-				end.to output("V456789 is an invalid command").to_stdout
+				end.to output("V 4 5 6 7 8 9 is an invalid command").to_stdout
 			end
 		end
 	end
@@ -66,16 +66,20 @@ describe BitmapEditor do
 				test_file.close
 				expect do
 					@editor.run(test_file)
-				end.to output("H45678 is an invalid command").to_stdout
+				end.to output("H 4 5 6 7 8 is an invalid command").to_stdout
 			end
 		end
 	end
 
 	describe '#check_params' do
 		context "validates the command params" do
-			it "return true if params are correct" do
-				command = "H 3 5 2 Z"
-				expect(@editor.check_params(command, 5)).to be true
+			it "returns truthy if params are correct" do
+				command1 = "H 3 5 2 Z"
+				command2 = "H 10 13 4 J"
+				command3 = "H 10 14 700000 k"
+				expect(@editor.check_params(command1, 5)).to be_truthy
+				expect(@editor.check_params(command2, 5)).to be_truthy
+				expect(@editor.check_params(command3, 5)).not_to be_truthy
 			end
 		end
 	end
