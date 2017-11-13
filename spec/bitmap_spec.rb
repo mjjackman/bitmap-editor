@@ -5,33 +5,6 @@ describe Bitmap do
 		@bitmap = Bitmap.new(5, 6)
 	end
 
-
-		# describe "#new_image" do
-		# context "given the numbers 5, 6" do
-
-		# 	it "returns a 2D array with 5 columns and 6 rows" do
-		# 		@editor.new_image(5, 6)
-		# 		expect(@editor.bitmap).to eql([['O','O','O','O','O'],
-		# 																['O','O','O','O','O'],
-		# 																['O','O','O','O','O'],
-		# 																['O','O','O','O','O'],
-		# 																['O','O','O','O','O'],
-		# 																['O','O','O','O','O']])
-		# 	end
-		# end
-
-		# context "given the numbers 2, 4" do
-
-		# 	it "returns a 2D array with 2 columns and 4 rows" do
-		# 		@test_bitmap = @editor.new_image(2, 4)
-		# 		expect(@test_bitmap).to eql([['O','O'],
-		# 																['O','O'],
-		# 																['O','O'],
-		# 																['O','O']])
-		# 	end
-		# end
-
-
 	describe "#colour_px" do
 		context "given the input 1, 3, 'A'" do
 

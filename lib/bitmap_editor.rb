@@ -12,6 +12,7 @@ class BitmapEditor
       puts "Error: #{e}"
       return 
     end
+    return puts "This file has no commands!!" if File.zero?(file)
     file.each do |line|
       line = line.chomp
       line.delete! ' '
