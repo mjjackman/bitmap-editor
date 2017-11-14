@@ -18,25 +18,25 @@ class BitmapEditor
       array_line = line.split(' ')
       case array_line[0]
       when 'I'
-        if params_order(command: 'I', params_num: array_line.length, a: array_line[1].to_i, b: array_line[2].to_i) && check_params(line, 3)
+        if params_order(command: 'I', params_num: array_line.length, a: array_line[1].to_i, b: array_line[2].to_i) && check_params(line)
           @bitmap = Bitmap.new(array_line[1].to_i, array_line[2].to_i)
         else
           return invalid_msg(line)
         end
       when 'L'
-        if params_order(command: 'L', params_num: array_line.length, a: array_line[1].to_i, b: array_line[2].to_i) && check_params(line, 4)
+        if params_order(command: 'L', params_num: array_line.length, a: array_line[1].to_i, b: array_line[2].to_i) && check_params(line)
           @bitmap.colour_px(array_line[1].to_i, array_line[2].to_i, array_line[3])
         else
           return invalid_msg(line)
         end
       when 'V'
-        if params_order(command: 'V', parmas_num: array_line.length, a: array_line[1].to_i, b: array_line[2].to_i, c: array_line[3].to_i, d: array_line[4].to_i) && check_params(line, 5)
+        if params_order(command: 'V', parmas_num: array_line.length, a: array_line[1].to_i, b: array_line[2].to_i, c: array_line[3].to_i, d: array_line[4].to_i) && check_params(line)
           @bitmap.colour_vertical_px(array_line[1].to_i, array_line[2].to_i, array_line[3].to_i, array_line[4])
         else
           return invalid_msg(line)
         end
       when 'H'
-        if params_order(command: 'H', parmas_num: array_line.length, a: array_line[1].to_i, b: array_line[2].to_i, c: array_line[3].to_i, d: array_line[4].to_i) && check_params(line, 5)
+        if params_order(command: 'H', parmas_num: array_line.length, a: array_line[1].to_i, b: array_line[2].to_i, c: array_line[3].to_i, d: array_line[4].to_i) && check_params(line)
           @bitmap.colour_horizontal_px(array_line[1].to_i, array_line[2].to_i, array_line[3].to_i, array_line[4])
         else
           return invalid_msg(line)
@@ -51,15 +51,13 @@ class BitmapEditor
     end
   end
 
-  def check_params(line, num)
-    if num == 3
-      line = line.delete(' ')
+  def check_params(line)
+    line = line.delete(' ')
+    if line[0] == 'I'
       line =~ /^[A-Z]\d{2,4}$/
-    elsif num == 4
-      line = line.delete(' ')
+    elsif line[0] == 'L'
       line =~ /^[A-Z]\d{2,6}[A-Z]$/
-    elsif num == 5
-      line = line.delete(' ')
+    elsif line[0] == 'V' || line[0] == 'H'
       line =~ /^[A-Z]\d{3,9}[A-Z]$/
     else 
       false
