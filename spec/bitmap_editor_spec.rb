@@ -94,7 +94,7 @@ describe BitmapEditor do
 			it "returns true if the params are correct" do
 				command1 = {command: 'I', params_num: 3, a: 0, b: 4}
 				command2 = {command: 'L', params_num: 4, a: 9, b: 3}
-				command3 = {command: 'V', parmas_num: 5, a: 3, b: 5, c: 6, d:7}
+				command3 = {command: 'V', params_num: 5, a: 3, b: 5, c: 6, d:7}
 				expect(@editor.params_order(command1)).to be false
 				expect(@editor.params_order(command2)).to be false
 				expect(@editor.params_order(command3)).to be true
