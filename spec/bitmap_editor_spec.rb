@@ -15,12 +15,8 @@ describe BitmapEditor do
 		end
 	end
 
-	before do
-		test_file = open("examples/test.txt", "w")
-	end
-
 	describe "new M x N image command" do
-		context "if the command is not equal to 3" do
+		context "if the command has more than 2 params" do
 			it "returns an error message" do
 				test_file = open("examples/test.txt", "w")
 				test_file.puts "I 3 4 5"
@@ -85,16 +81,20 @@ describe BitmapEditor do
 	end
 
 	before do
-		@bitmap = Bitmap.new(7, 8)
+		@editor = BitmapEditor.new
+		test_file = open("examples/test.txt", "w")
+		test_file.puts 'I 7 8'
+		test_file.close
+		@editor.run(test_file)
 	end
 
 	describe "#params_order" do
 		context "checks that the params are in the correct order and don't
 					exceed the size of the bitmap" do
 			it "returns true if the params are correct" do
-				command1 = {command: 'I', params_num: 3, a: 0}
+				command1 = {command: 'I', params_num: 3, a: 0, b: 4}
 				command2 = {command: 'L', params_num: 4, a: 9, b: 3}
-				command3 = {command: 'V', parmas_num: 5, a: 3, b: 5, c: 6}
+				command3 = {command: 'V', parmas_num: 5, a: 3, b: 5, c: 6, d:7}
 				expect(@editor.params_order(command1)).to be false
 				expect(@editor.params_order(command2)).to be false
 				expect(@editor.params_order(command3)).to be true

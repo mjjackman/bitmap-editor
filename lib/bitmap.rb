@@ -1,5 +1,5 @@
 class Bitmap
-	attr_reader :bitmap
+	attr_reader :bitmap, :m, :n
 
   def initialize(m, n)
     @m = m
