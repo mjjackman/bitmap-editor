@@ -16,8 +16,7 @@ class BitmapEditor
     file.each do |line|
       line = line.chomp
       array_line = line.split(' ')
-      command = line[0]
-      case command
+      case array_line[0]
       when 'I'
         if params_order(command: 'I', params_num: array_line.length, a: array_line[1].to_i, b: array_line[2].to_i) && check_params(line, 3)
           @bitmap = Bitmap.new(array_line[1].to_i, array_line[2].to_i)
