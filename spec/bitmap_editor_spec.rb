@@ -71,8 +71,8 @@ describe BitmapEditor do
 		end
 	end
 
-	describe '#check_params' do
-		context "validates the command params" do
+	describe "#check_params" do
+		context "validates the command has the correct number of params" do
 			it "returns truthy if params are correct" do
 				command1 = "H 3 5 2 Z"
 				command2 = "H 10 13 4 J"
@@ -80,6 +80,24 @@ describe BitmapEditor do
 				expect(@editor.check_params(command1, 5)).to be_truthy
 				expect(@editor.check_params(command2, 5)).to be_truthy
 				expect(@editor.check_params(command3, 5)).not_to be_truthy
+			end
+		end
+	end
+
+	before do
+		@bitmap = Bitmap.new(7, 8)
+	end
+
+	describe "#params_order" do
+		context "checks that the params are in the correct order and don't
+					exceed the size of the bitmap" do
+			it "returns true if the params are correct" do
+				command1 = {command: 'I', params_num: 3, a: 0}
+				command2 = {command: 'L', params_num: 4, a: 9, b: 3}
+				command3 = {command: 'V', parmas_num: 5, a: 3, b: 5, c: 6}
+				expect(@editor.params_order(command1)).to be false
+				expect(@editor.params_order(command2)).to be false
+				expect(@editor.params_order(command3)).to be true
 			end
 		end
 	end
