@@ -92,12 +92,22 @@ describe BitmapEditor do
 		context "checks that the params are in the correct order and don't
 					exceed the size of the bitmap" do
 			it "returns true if the params are correct" do
-				command1 = {command: 'I', params_num: 3, a: 0, b: 4}
-				command2 = {command: 'L', params_num: 4, a: 9, b: 3}
-				command3 = {command: 'V', params_num: 5, a: 3, b: 5, c: 6, d:7}
-				expect(@editor.params_order(command1)).to be false
+				command1 = {command: 'I', params_num: 3, a: 250, b: 250}
+				command2 = {command: 'I', params_num: 3, a: 0, b: 4}
+				command3 = {command: 'L', params_num: 4, a: 3, b: 8}
+				command4 = {command: 'L', params_num: 4, a: 8, b: 3}
+				command5 = {command: 'V', params_num: 5, a: 3, b: 5, c: 6}
+				command6 = {command: 'V', params_num: 5, a: 3, b: 5, c: 5}
+				command7 = {command: 'H', params_num: 5, a: 4, b: 6, c: 5}
+				command8 = {command: 'H', params_num: 5, a: 5, b: 3, c: 5}
+				expect(@editor.params_order(command1)).to be true
 				expect(@editor.params_order(command2)).to be false
 				expect(@editor.params_order(command3)).to be true
+				expect(@editor.params_order(command4)).to be false
+				expect(@editor.params_order(command5)).to be true
+				expect(@editor.params_order(command6)).to be false
+				expect(@editor.params_order(command7)).to be true
+				expect(@editor.params_order(command8)).to be false
 			end
 		end
 	end
