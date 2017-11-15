@@ -19,25 +19,25 @@ class BitmapEditor
       array_line.map! {|i| i =~ /[A-Z]/ ? i : i.to_i}
       case array_line[0]
       when 'I'
-        if params_order(line_hash(array_line)) && check_params(line) && array_line.length == 3
+        if array_line.length == 3 && check_params(line) && params_order(line_hash(array_line)) 
           @bitmap = Bitmap.new(array_line[1], array_line[2])
         else
           return invalid_msg(line)
         end
       when 'L'
-        if params_order(line_hash(array_line)) && check_params(line) && array_line.length == 4
+        if array_line.length == 4 && check_params(line) && params_order(line_hash(array_line)) 
           @bitmap.colour_px(array_line[1], array_line[2], array_line[3])
         else
           return invalid_msg(line)
         end
       when 'V'
-        if params_order(line_hash(array_line)) && check_params(line) && array_line.length == 5
+        if array_line.length == 5 && check_params(line) && params_order(line_hash(array_line))
           @bitmap.colour_vertical_px(array_line[1], array_line[2], array_line[3], array_line[4])
         else
           return invalid_msg(line)
         end
       when 'H'
-        if params_order(line_hash(array_line)) && check_params(line) && array_line.length == 5
+        if array_line.length == 5 && check_params(line) && params_order(line_hash(array_line)) 
           @bitmap.colour_horizontal_px(array_line[1], array_line[2], array_line[3], array_line[4])
         else
           return invalid_msg(line)
