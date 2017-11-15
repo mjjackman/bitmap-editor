@@ -111,4 +111,12 @@ describe BitmapEditor do
 			end
 		end
 	end
+
+	describe "#line_hash" do
+		it "takes an array of values and creates a hash with predefined keys" do
+			values = ['H', 1, 3 ]
+			expect(@editor.line_hash(values)).to eql({command: 'H', a: 1, b: 3})
+		end
+	end
+
 end
